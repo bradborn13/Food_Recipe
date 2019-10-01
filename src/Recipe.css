@@ -4,10 +4,11 @@
 
 .card .face {
     width: 400px;
-    height:350px;
+    height: 350px;
     transition: 0.5s;
-
+    overflow: hidden;
 }
+
 
 .card .face.face1 {
     position: relative;
@@ -38,10 +39,10 @@
     width: 400px;
 }
 
-.card .face.face1 .content p {
+.card .face.face1 .content span {
     position: absolute;
-    bottom:1vh;
-    left:0;
+    bottom: 1vh;
+    left: 0;
     background-color: black;
     color: white;
     padding-left: 20px;
@@ -53,22 +54,23 @@
     position: relative;
     background: #fff;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     transform: translateY(-225px);
 
+
 }
 
 .card:hover .face.face2 {
-   
+
     transform: translateY(0);
 
 }
 
-.card .face.face2 .content p {
+.card .face.face2 .content span {
     margin: 0;
     padding: 0;
     overflow: hidden;
