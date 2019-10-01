@@ -1,24 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useEffect,useState} from 'react';
+import Recipe from './Recipe';
 import './App.css';
 
 function App() {
+  const APP_ID= 'd22edaf6';
+  const APP_KEY='3c135eef215569a48c5769eb6439d9f5';
+  // const exampleRequest =  `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`;
+
+  const [recipes,setRecipes] = useState([]);
+  const [search,setSearch] = useState('');
+  const [query,setQuery] = useState('chicken');
+  useEffect( () =>{
+      getRecipes();
+  },[query]);
+  
+ const getRecipes = async() =>{
+   const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`).then(response => response.json()).then(apiData => {
+  
+  const recipeData = apiData.hits;
+   setRecipes(recipeData);
+   }).catch(err =>{
+     console.log(err,'ERROR');
+   });
+ };
+ const updateSearch = e =>{
+   setSearch(e.target.value);
+ };
+ const getSearch = e =>{
+   e.preventDefault();
+   setQuery(search);       
+   setSearch('');
+ }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={getSearch} className="search-form">
+        <input type="text" className="search-bar" value={search} onChange={updateSearch}></input>
+        <button type="submit"  className="search-button">Search</button>
+      </form>
+      <div className="receipt-card">
+      {/* <Recipe title={"Test2"} image={"https://media.giphy.com/media/duzpaTbCUy9Vu/giphy.gif"} calories={22} ingredients={112}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."} ingredients={11}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
+      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe> */}
+
+      {recipes.map(el =>(<Recipe title={el.recipe.label} image={el.recipe.image} calories={el.recipe.calories} ingredients={el.recipe.ingredients}></Recipe>))}
+</div>
     </div>
   );
 }
