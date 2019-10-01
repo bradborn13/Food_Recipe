@@ -15,16 +15,19 @@ background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
   padding:10px;
 }
 .search-button{
-  background:9afffb ;
+  background:#9afffb ;
   border:none;
-  padding:10px 20px;
-  color:white;
+  padding:10px 30px;
+  color:black;
+  font-size:18px;
+  font-weight: lighter;
 }
 .receipt-card{
   margin:0;
   padding:0;
   min-height: 100vh;
-  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);  display:flex;
+  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);  
+  display:flex;
   justify-content: center;
   font-family: consolas;
   flex-flow: row wrap;
