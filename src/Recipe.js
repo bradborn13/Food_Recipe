@@ -26,11 +26,23 @@ const Recipe =({receiptData}) =>{
             <span className="word">KCAL</span>
         </div>
         <div className="item">
-            <span className="num">{Math.round(receiptData.totalNutrients.PROCNT.quantity)}g</span>
+            {
+                
+                    receiptData.totalNutrients.PROCNT? (receiptData.totalNutrients.PROCNT.quantity ? ( < span className = "num" > {
+                        Math.round(receiptData.totalNutrients.PROCNT.quantity)
+                    } g</span>) :(<span className = "num"> ?? </span>)):(<span className = "num"> ?? </span>)
+                
+            }
             <span className="word">Protein</span>
         </div>
         <div className="item">
-            <span className="num">{Math.round(receiptData.totalNutrients.CHOCDF.quantity)}g</span>
+        {
+                
+                receiptData.totalNutrients.CHOCDF?(receiptData.totalNutrients.CHOCDF.quantity ? ( < span className = "num" > {
+                    Math.round(receiptData.totalNutrients.CHOCDF.quantity)
+                } g</span>) :(<span className = "num"> ?? </span>)):(<span className = "num"> ?? </span>)
+            
+        }
             <span className="word">Carbs</span>
         </div>
       </div>
