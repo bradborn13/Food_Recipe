@@ -14,9 +14,8 @@ function App() {
       getRecipes();
   },[query]);
   
- const getRecipes = async() =>{
+ const getRecipes = async() => {
    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`).then(response => response.json()).then(apiData => {
-  
   const recipeData = apiData.hits;
    setRecipes(recipeData);
    }).catch(err =>{
@@ -38,15 +37,6 @@ function App() {
         <button type="submit"  className="search-button">Search</button>
       </form>
       <div className="receipt-card">
-     {/* <Recipe title={"Test2"} image={"https://media.giphy.com/media/duzpaTbCUy9Vu/giphy.gif"} calories={22} ingredients={112}></Recipe> */}
-      {/*  <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
-      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."} ingredients={11}></Recipe>
-      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
-      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
-      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
-      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe>
-      <Recipe title={"Test"} image={"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif"} calories={12} ingredients={11}></Recipe> */}
-
       {recipes.map(el =>(<Recipe key={el.recipe.label} receiptData={el.recipe}></Recipe>))}
 </div>
     </div>

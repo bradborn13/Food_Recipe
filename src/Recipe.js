@@ -5,7 +5,7 @@ const Recipe =({receiptData}) =>{
 
         <div className="card">
     <div className="card-header">
-    <img src={receiptData.image} />  
+    <img src={receiptData.image} alt =""/>  
 <div className="cover"></div>   
 <div className="menu"></div>
 
@@ -17,8 +17,8 @@ const Recipe =({receiptData}) =>{
 <div className="container">
       <div className="left-section">
         <h3>{receiptData.label}</h3>
-        <p>Lorem Ipsum is imply dsafwqe ewfasf ew eqtsaf awrq efewqr </p>
-        <a className="followBtn">More Details</a>
+        <p>{receiptData.ingredientLines}</p>
+        <button className="detailsBtn" >More Details</button>
       </div>
       <div className="right-section">
         <div className="item">
