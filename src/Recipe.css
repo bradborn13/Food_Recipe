@@ -10,6 +10,14 @@
     transition:.5s;
     overflow: hidden;
 }
+.card:hover {
+    max-height:initial;
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport)*/
+    z-index:100; 
+}
+.card:hover .left-section p{
+max-height:max-content;
+}
 
 .card-header {
     height: 300px;
@@ -21,14 +29,7 @@
     height: 100%;
     width: 100%;
 }
-.card:hover {
-    max-height:initial;
-    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport)*/
-    z-index:100; 
-}
-.card:hover .left-section p{
-max-height:initial;
-}
+
 .card-header .cover {
     position: absolute;
     top: 0;
