@@ -6,7 +6,7 @@
 
 ## Basic installation steps: 
 
-### 1. clone repository
-### 2. cd recipe_app
-### 3. npm start
+## 1. clone repository
+## 2. cd recipe_app
+## 3. npm start
 
